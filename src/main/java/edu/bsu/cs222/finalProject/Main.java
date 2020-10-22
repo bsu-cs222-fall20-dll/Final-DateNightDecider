@@ -7,10 +7,20 @@ public class Main {
         Scanner read = new Scanner(System.in);
         System.out.println("Enter address:");
         String address = read.nextLine();
+        System.out.println("Enter radius in meters:");
+        String radius = read.nextLine();
+        System.out.println("Enter place type:");
+        String type = read.nextLine();
+
         GeocodeConnector geocodeConnector = new GeocodeConnector(address);
         GeocodeParser geocodeParser = new GeocodeParser(geocodeConnector.geocodeInputstream());
+
         if(geocodeParser.properInput()){
-            System.out.printf("Latitude:%s Longitude:%s", geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude());
+            PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), type, radius);
+            PlaceParser placeParser = new PlaceParser(placeConnector.placeInputstream());
+            for(Place place : placeParser.getPlaceNames()){
+                System.out.println(place.getName());
+            }
         }
 
     }

@@ -31,8 +31,7 @@ public class GeocodeParser {
                 lng = location.getAsJsonObject().get("lng").getAsString();
             }
         }
-        Location location = new Location(lat, lng);
-        return location;
+        return new Location(lat, lng);
     }
 
     //Checks if the user inputs an address that exists.

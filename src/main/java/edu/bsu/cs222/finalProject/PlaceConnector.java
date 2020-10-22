@@ -8,17 +8,19 @@ public class PlaceConnector {
     String latitude;
     String longitude;
     String radius;
+    String type;
 
-    public PlaceConnector(String latitude, String longitude, String radius) {
+    public PlaceConnector(String latitude, String longitude, String type, String radius) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.radius = radius;
+        this.type = type;
     }
 
     public URL convertToPlaceURL() throws Exception {
         String latLng = latitude + " " + longitude;
         String convertedLatLng = latLng.replaceAll(" ", ",");
-        return new URL("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + convertedLatLng + "&radius=" + radius + "&key=" + apiKey);
+        return new URL("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + convertedLatLng + "&type=" + type + "&radius=" + radius + "&key=" + apiKey);
     }
 
     public InputStream placeInputstream() throws Exception {

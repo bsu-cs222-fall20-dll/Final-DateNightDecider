@@ -29,8 +29,8 @@ public class GoogleMapsConnectorTest {
     public void testPlaceURLConverter() throws Exception {
         GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely Muncie IN");
         GeocodeParser geocodeParser = new GeocodeParser(geocodeConnector.geocodeInputstream());
-        PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), "1000");
-        Assertions.assertEquals( new URL("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.2033498,-85.40260479999999&radius=1000&key=AIzaSyB8dwWGPNjm7kqbrcj335AV2n4X8kYoKc4"), placeConnector.convertToPlaceURL());
+        PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), "restaurant", "1000");
+        Assertions.assertEquals( new URL("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=40.2033498,-85.40260479999999&type=restaurant&radius=1000&key=AIzaSyB8dwWGPNjm7kqbrcj335AV2n4X8kYoKc4"), placeConnector.convertToPlaceURL());
     }
 
     @Test
@@ -38,7 +38,7 @@ public class GoogleMapsConnectorTest {
         JsonParser parser = new JsonParser();
         GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely Muncie IN");
         GeocodeParser geocodeParser = new GeocodeParser(geocodeConnector.geocodeInputstream());
-        PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), "1000");
+        PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), "restaurant","1000");
         Reader reader = new InputStreamReader(placeConnector.placeInputstream());
         JsonElement rootElement = parser.parse(reader);
         Assertions.assertEquals("OK", rootElement.getAsJsonObject().get("status").getAsString());

@@ -24,4 +24,13 @@ public class JSONReaderTest {
         GeocodeParser geocodeParser = new GeocodeParser(geocodeConnector.geocodeInputstream());
         Assertions.assertEquals("-85.40260479999999", geocodeParser.getLatLng().getLongitude());
     }
+
+    @Test
+    public void testGetNames() throws Exception {
+        GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely Muncie IN");
+        GeocodeParser geocodeParser = new GeocodeParser(geocodeConnector.geocodeInputstream());
+        PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), "restaurant", "1000");
+        PlaceParser placeParser = new PlaceParser(placeConnector.placeInputstream());
+        Assertions.assertEquals("Amazing Joe's Grill", placeParser.getPlaceNames().get(0).getName());
+    }
 }
