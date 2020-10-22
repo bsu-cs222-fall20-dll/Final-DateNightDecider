@@ -4,14 +4,12 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 
+@SuppressWarnings("deprecation") //Gets rid of warnings for soon-to-be obsolete classes in the API
 public class GoogleMapsConnectorTest {
-
     @Test
     public void testURLConverter() throws Exception{
         GoogleConnector googleConnector = new GoogleConnector("1401 West Neely Muncie IN");

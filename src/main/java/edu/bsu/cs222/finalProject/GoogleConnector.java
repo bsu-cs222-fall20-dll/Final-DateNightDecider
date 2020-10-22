@@ -14,6 +14,7 @@ public class GoogleConnector {
         return new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + convertedAddress + "&key=" + apiKey);
     }
 
+    //Connects to the above URL returned from convertToGeocodeURL() and returns an Inputstream for the LocationParser.
     public InputStream geocodeInputstream() throws Exception {
         java.net.URLConnection connection = convertToGeocodeURL().openConnection();
         connection.setRequestProperty("User-Agent", "Place Tracker/0.1 (caslash@bsu.edu)");
