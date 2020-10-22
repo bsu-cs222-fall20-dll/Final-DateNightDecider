@@ -1,0 +1,73 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "1401",
+               "short_name" : "1401",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "West Neely Avenue",
+               "short_name" : "W Neely Ave",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Muncie",
+               "short_name" : "Muncie",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Center Township",
+               "short_name" : "Center Township",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Delaware County",
+               "short_name" : "Delaware County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Indiana",
+               "short_name" : "IN",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "47303",
+               "short_name" : "47303",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "1401 W Neely Ave, Muncie, IN 47303, USA",
+         "geometry" : {
+            "location" : {
+               "lat" : 40.2033498,
+               "lng" : -85.40260479999999
+            },
+            "location_type" : "ROOFTOP",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 40.2046987802915,
+                  "lng" : -85.40125581970848
+               },
+               "southwest" : {
+                  "lat" : 40.2020008197085,
+                  "lng" : -85.4039537802915
+               }
+            }
+         },
+         "place_id" : "ChIJ08wD1XM9FYgR8-Uvaf_1G7A",
+         "plus_code" : {
+            "compound_code" : "6H3W+8X Muncie, IN, USA",
+            "global_code" : "86GP6H3W+8X"
+         },
+         "types" : [ "street_address" ]
+      }
+   ],
+   "status" : "OK"
+}
