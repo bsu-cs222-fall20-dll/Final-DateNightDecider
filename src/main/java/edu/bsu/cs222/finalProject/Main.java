@@ -7,11 +7,11 @@ public class Main {
         Scanner read = new Scanner(System.in);
         System.out.println("Enter Address");
         String address = read.nextLine();
-        GoogleConnector googleConnector = new GoogleConnector(address);
-        LocationParser locationParser = new LocationParser(googleConnector.geocodeInputstream());
+        GeocodeConnector geocodeConnector = new GeocodeConnector(address);
+        GeocodeParser geocodeParser = new GeocodeParser(geocodeConnector.geocodeInputstream());
 
-        if(locationParser.properInput()){
-            System.out.println(locationParser.getLatLng());
+        if(geocodeParser.properInput()){
+            System.out.println(geocodeParser.getLatLng());
         }
     }
 }

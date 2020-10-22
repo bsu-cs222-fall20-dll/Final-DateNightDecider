@@ -7,13 +7,12 @@ import com.google.gson.JsonParser;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
-import java.lang.reflect.Array;
 
 @SuppressWarnings("deprecation") //Gets rid of warnings for soon-to-be obsolete classes in the API
-public class LocationParser {
-     InputStream inputStream;
+public class GeocodeParser {
+    InputStream inputStream;
     JsonObject rootObject;
-    public LocationParser (InputStream inputStream){
+    public GeocodeParser(InputStream inputStream){
         Reader reader = new InputStreamReader(inputStream);
         JsonParser parser = new JsonParser();
         JsonElement rootElement = parser.parse(reader);
@@ -21,7 +20,7 @@ public class LocationParser {
         this.inputStream = inputStream;
     }
 
-    public String getLatLng(){
+    public Location getLatLng(){
         String lat = " ";
         String lng = " ";
         JsonArray results = rootObject.getAsJsonObject().get("results").getAsJsonArray();
@@ -32,7 +31,8 @@ public class LocationParser {
                 lng = location.getAsJsonObject().get("lng").getAsString();
             }
         }
-        return("Latitude: " + lat + " Longitude: " + lng);
+        Location location = new Location(lat, lng);
+        return location;
     }
 
     //Checks if the user inputs an address that exists.
