@@ -16,12 +16,23 @@ public class Main {
         GeocodeParser geocodeParser = new GeocodeParser(geocodeConnector.geocodeInputstream());
 
         if(geocodeParser.properInput()){
-            PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), type, radius);
-            PlaceParser placeParser = new PlaceParser(placeConnector.placeInputstream());
-            for(Place place : placeParser.getPlaceNames()){
+            printPlaces(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), type, radius);
+        }
+    }
+
+    public static void printPlaces(String latitude, String longitude, String type, String radius) throws Exception {
+        Scanner read = new Scanner(System.in);
+        PlaceConnector placeConnector = new PlaceConnector(latitude, longitude, type, radius);
+        PlaceParser placeParser = new PlaceParser(placeConnector.placeInputstream());
+        if(placeParser.getPlaceNames().size()>0) {
+            for (Place place : placeParser.getPlaceNames()) {
                 System.out.println(place.getName());
             }
-        }
+        }else{
+            System.out.println("There were no results within that radius. Please enter a wider radius:");
+            radius = read.nextLine();
 
+            printPlaces(latitude, longitude, type, radius);
+        }
     }
 }
