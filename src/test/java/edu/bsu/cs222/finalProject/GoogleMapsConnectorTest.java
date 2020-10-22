@@ -15,6 +15,7 @@ public class GoogleMapsConnectorTest {
         GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely Muncie IN");
         Assertions.assertEquals( new URL("https://maps.googleapis.com/maps/api/geocode/json?address=1401%20West%20Neely%20Muncie%20IN&key=AIzaSyB8dwWGPNjm7kqbrcj335AV2n4X8kYoKc4"), geocodeConnector.convertToGeocodeURL());
     }
+
     @Test
     public void testGeocodeInputstream() throws Exception {
         JsonParser parser = new JsonParser();
