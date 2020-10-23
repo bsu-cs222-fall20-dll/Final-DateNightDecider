@@ -7,7 +7,7 @@ public class Main {
         Scanner read = new Scanner(System.in);
         System.out.println("Enter address:");
         String address = read.nextLine();
-        System.out.println("Enter radius in meters:");
+        System.out.println("Enter radius in miles:");
         String radius = read.nextLine();
         System.out.println("Enter place type:");
         String type = read.nextLine();
