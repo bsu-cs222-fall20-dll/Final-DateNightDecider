@@ -2,11 +2,16 @@ package edu.bsu.cs222.finalProject;
 
 public class Place {
     private String name;
-    public Place(String name) {
+    private String address;
+    public Place(String name, String address) {
         this.name = name;
+        this.address = address;
     }
 
     public String getName() {
         return name;
+    }
+    public String getAddress() {
+        return address;
     }
 }
