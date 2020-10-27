@@ -23,7 +23,7 @@ public class Display
             read.close();
             for (Place place : placeParser.getPlaceNames())
             {
-                System.out.println(place.getName());
+                System.out.printf("%s - %s\n", place.getName(), place.getAddress());
             }
         }
         else
