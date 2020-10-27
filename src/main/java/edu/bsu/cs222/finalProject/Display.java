@@ -20,7 +20,6 @@ public class Display
         PlaceParser placeParser = new PlaceParser(placeConnector.placeInputstream());
         if(placeParser.getPlaceNames().size()>0)
         {
-            read.close();
             for (Place place : placeParser.getPlaceNames())
             {
                 System.out.printf("%s - %s\n", place.getName(), place.getAddress());
@@ -30,7 +29,6 @@ public class Display
         {
             System.out.println("Sorry, there were no results within that radius.");
             radius = input.getRadius(read);
-            read.close();
 
             printPlaces(latitude, longitude, type, radius);
         }
