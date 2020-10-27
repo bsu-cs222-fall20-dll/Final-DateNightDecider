@@ -1,26 +1,28 @@
 package edu.bsu.cs222.finalProject;
 
-public class Main {
+import java.util.Scanner;
+
+public class Main
+{
     public static void main(String[] args) throws Exception
     {
         Input input = new Input();
         Display display = new Display();
+        Scanner read = new Scanner(System.in);
 
-        String address = input.getAddress(); //was thinking about putting all these in one big getInputs method
-        String radius = input.getRadius(); //but i don't know how/if you could return all these strings in one method?
-        String placeType = input.getPlaceType();
+
+        String address = input.getAddress(read); //for now i'll leave it like this
+        String radius = input.getRadius(read); //but later on i'll move these into one big getInfo method and store the info in a new class -AB
+        String placeType = input.getPlaceType(read);
+
+        read.close();
 
         GeocodeParser geocodeParser = display.prepareConnection(address);
 
-        prepareToPrintPlaces(geocodeParser, radius, placeType);
-
-    }
-
-    public static void prepareToPrintPlaces(GeocodeParser geocodeParser, String placeType, String radius) throws Exception
-    {
-        if(geocodeParser.properInput())
+        if(geocodeParser.checkForProperInput())
         {
             Display.printPlaces(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), placeType, radius);
         }
+
     }
 }

@@ -34,8 +34,7 @@ public class GeocodeParser {
         return new Location(lat, lng);
     }
 
-    //Checks if the user inputs an address that exists.
-    public boolean properInput(){
+    public boolean checkForProperInput(){
         return !rootObject.getAsJsonObject().get("status").getAsString().equals("ZERO_RESULTS"); //This returns true if the user inputs an address that exists.
     }
 }

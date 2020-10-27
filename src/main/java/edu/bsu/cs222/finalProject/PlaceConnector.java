@@ -19,8 +19,8 @@ public class PlaceConnector {
 
     public URL convertToPlaceURL() throws Exception {
         String latLng = latitude + " " + longitude;
-        Integer metersNum = Integer.parseInt(radius) * 1609;
-        String meters = String.valueOf(metersNum);
+        Integer convertMilesToMetersNum = Integer.parseInt(radius) * 1609;
+        String meters = String.valueOf(convertMilesToMetersNum);
         String convertedLatLng = latLng.replaceAll(" ", ",");
         return new URL("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=" + convertedLatLng + "&type=" + type + "&radius=" + meters + "&key=" + apiKey);
     }
