@@ -18,12 +18,10 @@ public class Main {
             case "4" -> "movie_theater";
             default -> " ";
         };
-
-
         GeocodeConnector geocodeConnector = new GeocodeConnector(address);
         GeocodeParser geocodeParser = new GeocodeParser(geocodeConnector.geocodeInputstream());
-
         if(geocodeParser.properInput()){
+            System.out.println(geocodeConnector.convertToGeocodeURL());
             printPlaces(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), type, radius);
         }
     }
