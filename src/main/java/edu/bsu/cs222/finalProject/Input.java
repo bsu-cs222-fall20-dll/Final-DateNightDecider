@@ -2,6 +2,7 @@ package edu.bsu.cs222.finalProject;
 
 import java.util.Scanner;
 
+@SuppressWarnings("all") //Suppresses warnings about read being unused.
 public class Input {
     public Scanner read;
 
