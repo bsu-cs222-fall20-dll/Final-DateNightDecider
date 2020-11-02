@@ -23,6 +23,8 @@ public class PlaceParser {
         this.inputStream = inputStream;
     }
 
+
+
     public ArrayList<Place> getPlaceNames() {
         ArrayList<Place> placeNames = new ArrayList<>();
         JsonArray results = rootObject.getAsJsonObject().get("results").getAsJsonArray();
@@ -30,12 +32,20 @@ public class PlaceParser {
             if(element.getAsJsonObject().has("name")){
                 JsonElement name = element.getAsJsonObject().get("name");
                 JsonElement address = element.getAsJsonObject().get("vicinity");
+                JsonElement priceLevel = element.getAsJsonObject().get("price_level");
                 String placeName = name.getAsString();
                 String placeAddress = address.getAsString();
-                Place newPlace = new Place(placeName, placeAddress);
+                Integer placePriceLevel = priceLevel.getAsInt();
+                Place newPlace = new Place(placeName, placeAddress, placePriceLevel);
                 placeNames.add(newPlace);
             }
         }
         return placeNames;
+    }
+
+
+    public ArrayList<Place> filterPriceLevel(ArrayList<Place> places, Integer minimum, Integer maximum){
+        places.removeIf(place -> place.getPriceLevel() > maximum && place.getPriceLevel() < minimum);
+        return places;
     }
 }

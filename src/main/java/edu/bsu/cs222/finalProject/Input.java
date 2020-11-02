@@ -42,4 +42,14 @@ public class Input {
         };
     }
 
+    public Integer getMinPriceLevel() {
+        System.out.println("Enter the minimum price level you wish to filter by:");
+        return Integer.parseInt(read.nextLine());
+    }
+
+    public Integer getMaxPriceLevel() {
+        System.out.println("Enter the maximum price level you wish to filter by:");
+        return Integer.parseInt(read.nextLine());
+    }
+
 }

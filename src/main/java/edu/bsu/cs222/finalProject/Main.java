@@ -12,11 +12,13 @@ public class Main {
         String radius = input.getRadius(); //but later on i'll move these into one big getInfo method and store the info in a new class -AB
         String placeType = input.getPlaceType();
         String keyword = input.getKeyword();
+        Integer minimum = input.getMinPriceLevel();
+        Integer maximum = input.getMaxPriceLevel();
 
         GeocodeParser geocodeParser = display.prepareConnection(address);
 
         if(geocodeParser.checkForProperInput()) {
-            Display.printPlaces(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), placeType, radius, keyword);
+            Display.printPlaces(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), placeType, radius, keyword, minimum, maximum);
             read.close();
         }
     }
