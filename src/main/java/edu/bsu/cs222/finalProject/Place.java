@@ -1,7 +1,7 @@
 package edu.bsu.cs222.finalProject;
 
 public class Place {
-    private String name;
+    private final String name;
     private String address;
     private Integer priceLevel;
     public Place(String name, String address, Integer priceLevel) {
