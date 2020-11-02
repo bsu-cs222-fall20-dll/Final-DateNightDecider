@@ -2,7 +2,7 @@ package edu.bsu.cs222.finalProject;
 
 public class Place {
     private final String name;
-    private String address;
+    private final String address;
     private Integer priceLevel;
     public Place(String name, String address, Integer priceLevel) {
         this.name = name;
