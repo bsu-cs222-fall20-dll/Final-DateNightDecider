@@ -23,15 +23,17 @@ public class GeocodeParser {
     public Location getLatLng(){
         String lat = " ";
         String lng = " ";
+        String placeID = " ";
         JsonArray results = rootObject.getAsJsonObject().get("results").getAsJsonArray();
         for(JsonElement element : results){
             if(element.getAsJsonObject().getAsJsonObject("geometry").isJsonObject()){
                 JsonElement location = element.getAsJsonObject().get("geometry").getAsJsonObject().get("location");
                 lat = location.getAsJsonObject().get("lat").getAsString();
                 lng = location.getAsJsonObject().get("lng").getAsString();
+                placeID = element.getAsJsonObject().get("place_id").getAsString();
             }
         }
-        return new Location(lat, lng);
+        return new Location(lat, lng, placeID);
     }
 
     public boolean checkForProperInput(){

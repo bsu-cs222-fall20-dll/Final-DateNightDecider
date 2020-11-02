@@ -32,10 +32,12 @@ public class PlaceParser {
                 JsonElement name = element.getAsJsonObject().get("name");
                 JsonElement address = element.getAsJsonObject().get("vicinity");
                 JsonElement priceLevel = element.getAsJsonObject().get("price_level");
+                JsonElement ID = element.getAsJsonObject().get("place_id");
                 String placeName = name.getAsString();
                 String placeAddress = address.getAsString();
                 Integer placePriceLevel = priceLevel.getAsInt();
-                Place newPlace = new Place(placeName, placeAddress, placePriceLevel);
+                String placeID = ID.getAsString();
+                Place newPlace = new Place(placeName, placeAddress, placePriceLevel, placeID);
                 placeNames.add(newPlace);
             }
         }

@@ -3,9 +3,11 @@ package edu.bsu.cs222.finalProject;
 public class Location {
     private final String latitude;
     private final String longitude;
-    public Location(String latitude, String longitude){
+    private final String placeID;
+    public Location(String latitude, String longitude, String placeID){
         this.latitude = latitude;
         this.longitude = longitude;
+        this.placeID = placeID;
     }
 
     public String getLatitude() {
@@ -13,5 +15,8 @@ public class Location {
     }
     public String getLongitude() {
         return longitude;
+    }
+    public String getPlaceID() {
+        return placeID;
     }
 }
