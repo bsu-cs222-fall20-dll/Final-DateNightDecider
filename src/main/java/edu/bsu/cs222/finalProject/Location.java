@@ -1,7 +1,7 @@
 package edu.bsu.cs222.finalProject;
 
 public class Location {
-    private String latitude;
+    private final String latitude;
     private String longitude;
     public Location(String latitude, String longitude){
         this.latitude = latitude;
