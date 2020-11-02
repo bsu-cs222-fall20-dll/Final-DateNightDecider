@@ -25,11 +25,11 @@ public class PlaceParser {
 
 
 
-    public ArrayList<Place> getPlaceNames() {
+    public ArrayList<Place> getPlaceNames(){
         ArrayList<Place> placeNames = new ArrayList<>();
         JsonArray results = rootObject.getAsJsonObject().get("results").getAsJsonArray();
-        for(JsonElement element : results){
-            if(element.getAsJsonObject().has("name")){
+        for (JsonElement element : results) {
+            if (element.getAsJsonObject().has("price_level")) {
                 JsonElement name = element.getAsJsonObject().get("name");
                 JsonElement address = element.getAsJsonObject().get("vicinity");
                 JsonElement priceLevel = element.getAsJsonObject().get("price_level");
@@ -43,9 +43,21 @@ public class PlaceParser {
         return placeNames;
     }
 
+    public ArrayList<Place> filterByPriceLevel(ArrayList<Place> placeList, Integer minimum, Integer maximum) {
+        ArrayList<Place> placesToRemove = new ArrayList<>();
+        for (Place place : placeList){
+            if(place.getPriceLevel() != null){
+                Integer priceLevel = place.getPriceLevel();
+                if (priceLevel > maximum || priceLevel < minimum){
+                    placesToRemove.add(place);
+                }
+            }else{
+                return null;
+            }
+        }
 
-    public ArrayList<Place> filterPriceLevel(ArrayList<Place> places, Integer minimum, Integer maximum){
-        places.removeIf(place -> place.getPriceLevel() > maximum && place.getPriceLevel() < minimum);
-        return places;
+        placeList.removeAll(placesToRemove);
+
+        return placeList;
     }
 }

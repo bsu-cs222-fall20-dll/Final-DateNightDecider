@@ -16,14 +16,16 @@ public class Display {
 
         PlaceConnector placeConnector = new PlaceConnector(latitude, longitude, type, radius, keyword);
         PlaceParser placeParser = new PlaceParser(placeConnector.placeInputstream());
-        if(placeParser.getPlaceNames().size()>0) {
-            System.out.println(placeConnector.convertToPlaceURL());
-            placeParser.filterPriceLevel(placeParser.getPlaceNames(), minimum, maximum);
-        } else {
+        ArrayList<Place> filteredPlaceNames = placeParser.filterByPriceLevel(placeParser.getPlaceNames(), minimum, maximum);
+        if(filteredPlaceNames.isEmpty()) {
             System.out.println("Sorry, there were no results within that radius.");
             radius = input.getRadius();
-
             printPlaces(latitude, longitude, type, radius, keyword, minimum, maximum);
+        } else {
+            System.out.println(placeConnector.convertToPlaceURL());
+            for (Place place : filteredPlaceNames){
+                System.out.printf("%s - %s\n", place.getName(), place.getAddress());
+            }
         }
     }
 }

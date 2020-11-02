@@ -33,4 +33,12 @@ public class JSONReaderTest {
         PlaceParser placeParser = new PlaceParser(inputStream);
         Assertions.assertEquals("Amazing Joe's Grill", placeParser.getPlaceNames().get(0).getName());
     }
+
+
+    @Test
+    public void testFilterPriceLevel() throws Exception{
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("Places.json");
+        PlaceParser placeParser = new PlaceParser(inputStream);
+        Assertions.assertEquals("Subway", placeParser.filterByPriceLevel(placeParser.getPlaceNames(), 0, 1).get(0).getName());
+    }
 }
