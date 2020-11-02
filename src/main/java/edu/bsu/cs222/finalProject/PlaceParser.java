@@ -9,7 +9,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
-import java.util.Map;
 
 @SuppressWarnings("deprecation") //Gets rid of warnings for soon-to-be obsolete classes in the API
 public class PlaceParser {
