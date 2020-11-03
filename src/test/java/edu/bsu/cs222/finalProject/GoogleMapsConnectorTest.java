@@ -29,8 +29,8 @@ public class GoogleMapsConnectorTest {
     public void testPlaceURLConverter() throws Exception {
         GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely Muncie IN");
         GeocodeParser geocodeParser = new GeocodeParser(geocodeConnector.geocodeInputstream());
-        PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), "restaurant", "1", "mcdonalds");
-        Assertions.assertEquals( new URL("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=mcdonalds&location=40.2033498,-85.40260479999999&type=restaurant&radius=1609.34&key=AIzaSyB8dwWGPNjm7kqbrcj335AV2n4X8kYoKc4"), placeConnector.convertToPlaceURL());
+        PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), "restaurant", "1", "");
+        Assertions.assertEquals( new URL("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=&location=40.2033498,-85.40260479999999&type=restaurant&radius=1609.34&key=AIzaSyB8dwWGPNjm7kqbrcj335AV2n4X8kYoKc4"), placeConnector.convertToPlaceURL());
     }
 
     @Test
@@ -38,7 +38,7 @@ public class GoogleMapsConnectorTest {
         JsonParser parser = new JsonParser();
         GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely Muncie IN");
         GeocodeParser geocodeParser = new GeocodeParser(geocodeConnector.geocodeInputstream());
-        PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), "restaurant","1", "mcdonalds");
+        PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), "restaurant","1", "");
         Reader reader = new InputStreamReader(placeConnector.placeInputstream());
         JsonElement rootElement = parser.parse(reader);
         Assertions.assertEquals("OK", rootElement.getAsJsonObject().get("status").getAsString());
@@ -51,6 +51,20 @@ public class GoogleMapsConnectorTest {
         PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), "restaurant", "1", "");
         PlaceParser placeParser = new PlaceParser(placeConnector.placeInputstream());
         DirectionConnector directionConnector = new DirectionConnector(geocodeParser.getLatLng().getPlaceID(), placeParser.getPlaceNames().get(0).getPlaceID());
-        Assertions.assertEquals(new URL("https://maps.googleapis.com/maps/api/directions/json?origin=ChIJ08wD1XM9FYgR8-Uvaf_1G7A&destination=ChIJKwVAmp49FYgRuZ7TJlBWmwY&key=AIzaSyB8dwWGPNjm7kqbrcj335AV2n4X8kYoKc4"), directionConnector.convertToDirectionURL());
+        Assertions.assertEquals(new URL("https://maps.googleapis.com/maps/api/directions/json?origin=place_id:ChIJ08wD1XM9FYgR8-Uvaf_1G7A&destination=place_id:ChIJKwVAmp49FYgRuZ7TJlBWmwY&key=AIzaSyB8dwWGPNjm7kqbrcj335AV2n4X8kYoKc4"), directionConnector.convertToDirectionURL());
     }
+
+    @Test
+    public void testDirectionInputstream() throws Exception {
+        JsonParser parser = new JsonParser();
+        GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely Muncie IN");
+        GeocodeParser geocodeParser = new GeocodeParser(geocodeConnector.geocodeInputstream());
+        PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), "restaurant", "1", "");
+        PlaceParser placeParser = new PlaceParser(placeConnector.placeInputstream());
+        DirectionConnector directionConnector = new DirectionConnector(geocodeParser.getLatLng().getPlaceID(), placeParser.getPlaceNames().get(0).getPlaceID());
+        Reader reader = new InputStreamReader(directionConnector.directionInputstream());
+        JsonElement rootElement = parser.parse(reader);
+        Assertions.assertEquals("OK", rootElement.getAsJsonObject().get("status").getAsString());
+    }
+
 }

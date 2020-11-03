@@ -1,5 +1,6 @@
 package edu.bsu.cs222.finalProject;
 
+import java.io.InputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
@@ -13,7 +14,13 @@ public class DirectionConnector {
     }
 
     public URL convertToDirectionURL() throws Exception {
-        return new URL("https://maps.googleapis.com/maps/api/directions/json?origin=" + originPlaceID + "&destination=" + destinationPlaceID + "&key=" + apiKey);
+        return new URL("https://maps.googleapis.com/maps/api/directions/json?origin=place_id:" + originPlaceID + "&destination=place_id:" + destinationPlaceID + "&key=" + apiKey);
+    }
+
+    public InputStream directionInputstream() throws Exception {
+        java.net.URLConnection connection = convertToDirectionURL().openConnection();
+        connection.setRequestProperty("User-Agent", "Place Tracker/0.1 (caslash@bsu.edu)");
+        return connection.getInputStream();
     }
 
 }
