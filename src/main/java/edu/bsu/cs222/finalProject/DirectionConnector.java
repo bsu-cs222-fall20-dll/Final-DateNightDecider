@@ -2,12 +2,12 @@ package edu.bsu.cs222.finalProject;
 
 import java.io.InputStream;
 import java.net.URL;
-import java.net.URLConnection;
 
 public class DirectionConnector {
     String apiKey = "AIzaSyB8dwWGPNjm7kqbrcj335AV2n4X8kYoKc4";
     String originPlaceID;
     String destinationPlaceID;
+
     public DirectionConnector(String originPlaceID, String destinationPlaceID) {
         this.originPlaceID = originPlaceID;
         this.destinationPlaceID = destinationPlaceID;

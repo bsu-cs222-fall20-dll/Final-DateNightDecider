@@ -20,7 +20,7 @@ public class GeocodeParser {
         this.inputStream = inputStream;
     }
 
-    public Location getLatLng(){
+    public Location getLocation(){
         String lat = " ";
         String lng = " ";
         String placeID = " ";

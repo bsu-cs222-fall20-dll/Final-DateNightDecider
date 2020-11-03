@@ -52,4 +52,10 @@ public class Input {
         return Integer.parseInt(read.nextLine());
     }
 
+    public Integer getDestination() {
+        Integer destination = 0;
+        System.out.println("Enter the place you would like to go to:");
+        destination = Integer.parseInt(read.nextLine());
+        return destination-=1;
+    }
 }

@@ -11,6 +11,7 @@ public class Display {
     }
 
     public static void printPlaces(String latitude, String longitude, String type, String radius, String keyword, Integer minimum, Integer maximum) throws Exception {
+        Integer number = 1;
         Scanner read = new Scanner(System.in);
         Input input = new Input(read);
 
@@ -24,7 +25,8 @@ public class Display {
         } else {
             System.out.println(placeConnector.convertToPlaceURL());
             for (Place place : filteredPlaceNames){
-                System.out.printf("%s - %s\n", place.getName(), place.getAddress());
+                System.out.printf("%d. %s - %s\n", number, place.getName(), place.getAddress());
+                number++;
             }
         }
     }

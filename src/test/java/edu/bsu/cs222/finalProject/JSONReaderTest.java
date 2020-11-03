@@ -17,14 +17,14 @@ public class JSONReaderTest {
     public void testGetLatitude() throws Exception {
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("Location.json");
         GeocodeParser geocodeParser = new GeocodeParser(inputStream);
-        Assertions.assertEquals("40.2033498", geocodeParser.getLatLng().getLatitude());
+        Assertions.assertEquals("40.2033498", geocodeParser.getLocation().getLatitude());
     }
 
     @Test
     public void testGetLongitude() throws Exception {
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("Location.json");
         GeocodeParser geocodeParser = new GeocodeParser(inputStream);
-        Assertions.assertEquals("-85.40260479999999", geocodeParser.getLatLng().getLongitude());
+        Assertions.assertEquals("-85.40260479999999", geocodeParser.getLocation().getLongitude());
     }
 
     @Test
@@ -34,11 +34,17 @@ public class JSONReaderTest {
         Assertions.assertEquals("Amazing Joe's Grill", placeParser.getPlaceNames().get(0).getName());
     }
 
-
     @Test
     public void testFilterPriceLevel() throws Exception{
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("Places.json");
         PlaceParser placeParser = new PlaceParser(inputStream);
         Assertions.assertEquals("Subway", placeParser.filterByPriceLevel(placeParser.getPlaceNames(), 0, 1).get(0).getName());
+    }
+
+    @Test
+    public void testGetTravelTime() throws Exception{
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("Direction.json");
+        DirectionParser directionParser = new DirectionParser(inputStream);
+        Assertions.assertEquals("4 mins", directionParser.getTravelTime());
     }
 }

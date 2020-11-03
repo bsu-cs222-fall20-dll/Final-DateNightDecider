@@ -14,12 +14,24 @@ public class Main {
         String keyword = input.getKeyword();
         Integer minimum = input.getMinPriceLevel();
         Integer maximum = input.getMaxPriceLevel();
-
         GeocodeParser geocodeParser = display.prepareConnection(address);
-
         if(geocodeParser.checkForProperInput()) {
-            Display.printPlaces(geocodeParser.getLatLng().getLatitude(), geocodeParser.getLatLng().getLongitude(), placeType, radius, keyword, minimum, maximum);
+            Display.printPlaces(geocodeParser.getLocation().getLatitude(), geocodeParser.getLocation().getLongitude(), placeType, radius, keyword, minimum, maximum);
             read.close();
         }
+        /*
+        Integer destination = input.getDestination(); // User inputs desired destination
+
+        String originPlaceID = geocodeParser.getLocation().getPlaceID(); // Get the origin's placeID
+        */
+
+        /*
+        1. Choose the desired destination
+        2. Get that place's placeID
+        3. Get the origin's placeID
+        4. Send both placeIDs to DirectionConnector
+        5. Parse through the resulting json to find the travel time
+        6. Output the Address of the origin and destination with the travel time.
+         */
     }
 }
