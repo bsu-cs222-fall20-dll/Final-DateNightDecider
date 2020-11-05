@@ -15,23 +15,25 @@ public class Main {
         Integer minimum = input.getMinPriceLevel();
         Integer maximum = input.getMaxPriceLevel();
         GeocodeParser geocodeParser = display.prepareConnection(address);
+
+        PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLocation().getLatitude(), geocodeParser.getLocation().getLongitude(), placeType, radius, keyword);
+        PlaceParser placeParser = new PlaceParser(placeConnector.placeInputstream());
+
+
         if(geocodeParser.checkForProperInput()) {
             Display.printPlaces(geocodeParser.getLocation().getLatitude(), geocodeParser.getLocation().getLongitude(), placeType, radius, keyword, minimum, maximum);
-            read.close();
         }
-        /*
+
         Integer destination = input.getDestination(); // User inputs desired destination
-
+        String placePlaceID = placeParser.getPlaceNames().get(destination).getPlaceID(); // Get the place's placeID
+        String placeName = placeParser.getPlaceNames().get(destination).getName();
         String originPlaceID = geocodeParser.getLocation().getPlaceID(); // Get the origin's placeID
-        */
 
-        /*
-        1. Choose the desired destination
-        2. Get that place's placeID
-        3. Get the origin's placeID
-        4. Send both placeIDs to DirectionConnector
-        5. Parse through the resulting json to find the travel time
-        6. Output the Address of the origin and destination with the travel time.
-         */
+        DirectionConnector directionConnector = new DirectionConnector(originPlaceID, placePlaceID);
+        DirectionParser directionParser = new DirectionParser(directionConnector.directionInputstream());
+
+        Display.printTravelTime(directionParser.getTravelTime(), placeName);
+
+        read.close();
     }
 }

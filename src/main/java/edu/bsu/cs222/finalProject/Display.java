@@ -30,4 +30,8 @@ public class Display {
             }
         }
     }
+
+    public static void printTravelTime(String travelTime, String placeName) {
+        System.out.println("It will take approximately " + travelTime + " to get to " + placeName);
+    }
 }
