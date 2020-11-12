@@ -15,6 +15,16 @@ public class Input {
         return read.nextLine(); //might make it easier for the layman to understand -AB
     }
 
+    public String getCity() {
+        System.out.println("Enter city:");
+        return read.nextLine();
+    }
+
+    public String getState() {
+        System.out.println("Enter state:");
+        return read.nextLine();
+    }
+
     public String getRadius() {
         System.out.println("Enter radius in miles:");
         return read.nextLine();
@@ -56,6 +66,6 @@ public class Input {
         Integer destination = 0;
         System.out.println("Enter the place you would like to go to:");
         destination = Integer.parseInt(read.nextLine());
-        return destination--;
+        return destination-=1;
     }
 }

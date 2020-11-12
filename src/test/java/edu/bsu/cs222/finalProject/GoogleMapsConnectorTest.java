@@ -12,14 +12,14 @@ import java.net.URL;
 public class GoogleMapsConnectorTest {
     @Test
     public void testGeocodeURLConverter() throws Exception{
-        GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely Muncie IN");
+        GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely", "Muncie", "IN");
         Assertions.assertEquals( new URL("https://maps.googleapis.com/maps/api/geocode/json?address=1401%20West%20Neely%20Muncie%20IN&key=AIzaSyB8dwWGPNjm7kqbrcj335AV2n4X8kYoKc4"), geocodeConnector.convertToGeocodeURL());
     }
 
     @Test
     public void testGeocodeInputstream() throws Exception {
         JsonParser parser = new JsonParser();
-        GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely Muncie IN");
+        GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely", "Muncie", "IN");
         Reader reader = new InputStreamReader(geocodeConnector.geocodeInputstream());
         JsonElement rootElement = parser.parse(reader);
         Assertions.assertEquals("OK", rootElement.getAsJsonObject().get("status").getAsString());
@@ -27,7 +27,7 @@ public class GoogleMapsConnectorTest {
 
     @Test
     public void testPlaceURLConverter() throws Exception {
-        GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely Muncie IN");
+        GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely", "Muncie", "IN");
         GeocodeParser geocodeParser = new GeocodeParser(geocodeConnector.geocodeInputstream());
         PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLocation().getLatitude(), geocodeParser.getLocation().getLongitude(), "restaurant", "1", "");
         Assertions.assertEquals( new URL("https://maps.googleapis.com/maps/api/place/nearbysearch/json?keyword=&location=40.2033498,-85.40260479999999&type=restaurant&radius=1609.34&key=AIzaSyB8dwWGPNjm7kqbrcj335AV2n4X8kYoKc4"), placeConnector.convertToPlaceURL());
@@ -36,7 +36,7 @@ public class GoogleMapsConnectorTest {
     @Test
     public void testPlaceInputstream() throws Exception {
         JsonParser parser = new JsonParser();
-        GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely Muncie IN");
+        GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely", "Muncie", "IN");
         GeocodeParser geocodeParser = new GeocodeParser(geocodeConnector.geocodeInputstream());
         PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLocation().getLatitude(), geocodeParser.getLocation().getLongitude(), "restaurant","1", "");
         Reader reader = new InputStreamReader(placeConnector.placeInputstream());
@@ -46,7 +46,7 @@ public class GoogleMapsConnectorTest {
 
     @Test
     public void testDirectionURLConverter() throws Exception {
-        GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely Muncie IN");
+        GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely", "Muncie", "IN");
         GeocodeParser geocodeParser = new GeocodeParser(geocodeConnector.geocodeInputstream());
         PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLocation().getLatitude(), geocodeParser.getLocation().getLongitude(), "restaurant", "1", "");
         PlaceParser placeParser = new PlaceParser(placeConnector.placeInputstream());
@@ -57,7 +57,7 @@ public class GoogleMapsConnectorTest {
     @Test
     public void testDirectionInputstream() throws Exception {
         JsonParser parser = new JsonParser();
-        GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely Muncie IN");
+        GeocodeConnector geocodeConnector = new GeocodeConnector("1401 West Neely", "Muncie", "IN");
         GeocodeParser geocodeParser = new GeocodeParser(geocodeConnector.geocodeInputstream());
         PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLocation().getLatitude(), geocodeParser.getLocation().getLongitude(), "restaurant", "1", "");
         PlaceParser placeParser = new PlaceParser(placeConnector.placeInputstream());

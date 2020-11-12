@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class Display {
 
-    public GeocodeParser prepareConnection(String address) throws Exception {
-        GeocodeConnector geocodeConnector = new GeocodeConnector(address);
+    public GeocodeParser prepareConnection(String streetAddress, String city, String state) throws Exception {
+        GeocodeConnector geocodeConnector = new GeocodeConnector(streetAddress, city, state);
         return new GeocodeParser(geocodeConnector.geocodeInputstream());
     }
 
@@ -31,7 +31,7 @@ public class Display {
         }
     }
 
-    public static void printTravelTime(String travelTime, String placeName) {
-        System.out.println("It will take approximately " + travelTime + " to get to " + placeName);
+    public static void printTravelTime(String travelTime, String placeName, String placeAddress) {
+        System.out.printf("It will take approximately %s to get to %s at %s", travelTime, placeName, placeAddress);
     }
 }
