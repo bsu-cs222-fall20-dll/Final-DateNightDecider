@@ -57,9 +57,7 @@ public class PlaceParser {
             }
         }
 
-        if(minimum != null && maximum != null){
-            placeList.removeAll(placesToRemove);
-        }
+        placeList.removeAll(placesToRemove);
 
         return placeList;
     }
