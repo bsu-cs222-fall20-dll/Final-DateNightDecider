@@ -34,7 +34,7 @@ public class Input {
     }
 
     public String getKeyword() {
-        System.out.println("Enter a keyword you would like to filter by. Or enter 0 if you wouldn't like to:");
+        System.out.println("Enter a keyword you would like to filter by, or enter 0 to skip:");
         String keyword = read.nextLine();
         return switch (keyword) {
             case "0" -> "";
@@ -43,12 +43,12 @@ public class Input {
     }
 
     public Integer getMinPriceLevel() {
-        System.out.println("Enter the minimum price level you wish to filter by:");
+        System.out.println("Enter the minimum price level (0-4) you wish to filter by:");
         return Integer.parseInt(read.nextLine());
     }
 
     public Integer getMaxPriceLevel() {
-        System.out.println("Enter the maximum price level you wish to filter by:");
+        System.out.println("Enter the maximum price level (0-4) you wish to filter by:");
         return Integer.parseInt(read.nextLine());
     }
 

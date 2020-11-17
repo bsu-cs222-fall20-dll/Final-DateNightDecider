@@ -1,5 +1,7 @@
 package edu.bsu.cs222.finalProject;
 
+//This class stores information about places gathered from Google to be displayed later.
+
 public class Place {
     private final String name;
     private final String address;
@@ -24,4 +26,6 @@ public class Place {
     public String getPlaceID() {
         return placeID;
     }
+
+
 }

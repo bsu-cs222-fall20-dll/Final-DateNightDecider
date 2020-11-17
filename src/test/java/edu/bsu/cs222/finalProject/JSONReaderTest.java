@@ -8,7 +8,7 @@ public class JSONReaderTest {
 
     @Test
     public void testJsonReader() throws Exception {
-        GeocodeConnector geocodeConnector = new GeocodeConnector("dfsahjkibsgdfhsdfghshjsh");
+        GeocodeConnector geocodeConnector = new GeocodeConnector("dfsahjkibsgdfhsdfghshjsh", "ahbdgsifhdfhlabjdsfhjl", "fhyjbdasflkh");
         GeocodeParser geocodeParser = new GeocodeParser(geocodeConnector.geocodeInputstream());
         Assertions.assertFalse(geocodeParser.checkForProperInput());
     }

@@ -1,0 +1,181 @@
+{
+  "geocoded_waypoints" : [
+    {
+      "geocoder_status" : "OK",
+      "place_id" : "ChIJ08wD1XM9FYgR8-Uvaf_1G7A",
+      "types" : [ "street_address" ]
+    },
+    {
+      "geocoder_status" : "OK",
+      "place_id" : "ChIJKwVAmp49FYgRuZ7TJlBWmwY",
+      "types" : [ "bar", "establishment", "food", "point_of_interest", "restaurant" ]
+    }
+  ],
+  "routes" : [
+    {
+      "bounds" : {
+        "northeast" : {
+          "lat" : 40.2040614,
+          "lng" : -85.39254729999999
+        },
+        "southwest" : {
+          "lat" : 40.2016026,
+          "lng" : -85.4029992
+        }
+      },
+      "copyrights" : "Map data ©2020",
+      "legs" : [
+        {
+          "distance" : {
+            "text" : "0.8 mi",
+            "value" : 1242
+          },
+          "duration" : {
+            "text" : "4 mins",
+            "value" : 230
+          },
+          "end_address" : "909 Wheeling Ave, Muncie, IN 47303, USA",
+          "end_location" : {
+            "lat" : 40.2016026,
+            "lng" : -85.39254729999999
+          },
+          "start_address" : "1401 W Neely Ave, Muncie, IN 47303, USA",
+          "start_location" : {
+            "lat" : 40.20299989999999,
+            "lng" : -85.4026004
+          },
+          "steps" : [
+            {
+              "distance" : {
+                "text" : "151 ft",
+                "value" : 46
+              },
+              "duration" : {
+                "text" : "1 min",
+                "value" : 17
+              },
+              "end_location" : {
+                "lat" : 40.2028418,
+                "lng" : -85.4029992
+              },
+              "html_instructions" : "Head \u003cb\u003ewest\u003c/b\u003e toward \u003cb\u003eN New York Ave\u003c/b\u003e",
+              "polyline" : {
+                "points" : "wcktFfeghO?l@@H@JBFB@@@B?L?"
+              },
+              "start_location" : {
+                "lat" : 40.20299989999999,
+                "lng" : -85.4026004
+              },
+              "travel_mode" : "DRIVING"
+            },
+            {
+              "distance" : {
+                "text" : "0.1 mi",
+                "value" : 174
+              },
+              "duration" : {
+                "text" : "1 min",
+                "value" : 81
+              },
+              "end_location" : {
+                "lat" : 40.2028548,
+                "lng" : -85.40094909999999
+              },
+              "html_instructions" : "Turn \u003cb\u003eleft\u003c/b\u003e toward \u003cb\u003eN New York Ave\u003c/b\u003e",
+              "maneuver" : "turn-left",
+              "polyline" : {
+                "points" : "wbktFvgghOAaF?}A?yA"
+              },
+              "start_location" : {
+                "lat" : 40.2028418,
+                "lng" : -85.4029992
+              },
+              "travel_mode" : "DRIVING"
+            },
+            {
+              "distance" : {
+                "text" : "440 ft",
+                "value" : 134
+              },
+              "duration" : {
+                "text" : "1 min",
+                "value" : 27
+              },
+              "end_location" : {
+                "lat" : 40.2040614,
+                "lng" : -85.4009513
+              },
+              "html_instructions" : "Turn \u003cb\u003eleft\u003c/b\u003e onto \u003cb\u003eN New York Ave\u003c/b\u003e",
+              "maneuver" : "turn-left",
+              "polyline" : {
+                "points" : "ybktF|zfhOcA?sA?yA?"
+              },
+              "start_location" : {
+                "lat" : 40.2028548,
+                "lng" : -85.40094909999999
+              },
+              "travel_mode" : "DRIVING"
+            },
+            {
+              "distance" : {
+                "text" : "0.4 mi",
+                "value" : 596
+              },
+              "duration" : {
+                "text" : "1 min",
+                "value" : 79
+              },
+              "end_location" : {
+                "lat" : 40.20400799999999,
+                "lng" : -85.39393140000001
+              },
+              "html_instructions" : "Turn \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eW Neely Ave\u003c/b\u003e",
+              "maneuver" : "turn-right",
+              "polyline" : {
+                "points" : "kjktF|zfhO@uC?}A@iG@kGBkD?}A@}C?{@?k@Aq@?o@"
+              },
+              "start_location" : {
+                "lat" : 40.2040614,
+                "lng" : -85.4009513
+              },
+              "travel_mode" : "DRIVING"
+            },
+            {
+              "distance" : {
+                "text" : "0.2 mi",
+                "value" : 292
+              },
+              "duration" : {
+                "text" : "1 min",
+                "value" : 26
+              },
+              "end_location" : {
+                "lat" : 40.2016026,
+                "lng" : -85.39254729999999
+              },
+              "html_instructions" : "Turn \u003cb\u003eright\u003c/b\u003e onto \u003cb\u003eWheeling Ave\u003c/b\u003e\u003cdiv style=\"font-size:0.9em\"\u003eDestination will be on the right\u003c/div\u003e",
+              "maneuver" : "turn-right",
+              "polyline" : {
+                "points" : "ajktF`oehO`Ag@j@WdHiDbAc@HE"
+              },
+              "start_location" : {
+                "lat" : 40.20400799999999,
+                "lng" : -85.39393140000001
+              },
+              "travel_mode" : "DRIVING"
+            }
+          ],
+          "traffic_speed_entry" : [],
+          "via_waypoint" : []
+        }
+      ],
+      "overview_polyline" : {
+        "points" : "wcktFfeghO@v@DRDBP?A_I?yAcA?mD?@sFF_X?wH?o@`Ag@pIaElAi@"
+      },
+      "summary" : "W Neely Ave",
+      "warnings" : [],
+      "waypoint_order" : []
+    }
+  ],
+  "status" : "OK"
+}

@@ -1,0 +1,8 @@
+.hBox {
+    -fx-font-fill: #ffffff;
+    -fx-font-size: 18pt;
+}
+
+.body {
+    -fx-background-color: black;
+}
