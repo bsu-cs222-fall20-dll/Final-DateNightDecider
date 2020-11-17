@@ -10,11 +10,9 @@ import javafx.stage.Stage;
 public class Main extends Application {
     public void start(Stage primaryStage) throws Exception
     {
-        Controller controller = new Controller();
         Parent root = FXMLLoader.load(getClass().getResource("/view.fxml"));
         primaryStage.setTitle("Date Night Decider");
         primaryStage.setScene(new Scene(root, 800, 550));
-        controller.configureComboBoxes();
         primaryStage.show();
     }
 
