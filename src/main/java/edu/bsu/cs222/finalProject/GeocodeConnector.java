@@ -4,12 +4,18 @@ import java.net.URL;
 
 public class GeocodeConnector {
     String apiKey = "AIzaSyB8dwWGPNjm7kqbrcj335AV2n4X8kYoKc4";
-    String address;
-    public GeocodeConnector(String address) {
-        this.address = address;
+    String streetAddress;
+    String city;
+    String state;
+    public GeocodeConnector(String streetAddress, String city, String state) {
+        this.streetAddress = streetAddress;
+        this.city = city;
+        this.state = state;
     }
 
     public URL convertToGeocodeURL() throws Exception {
+        String address = "";
+        address = String.format("%s %s %s", streetAddress, city, state);
         String convertedAddress = address.replaceAll(" ", "%20");
         return new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + convertedAddress + "&key=" + apiKey);
     }

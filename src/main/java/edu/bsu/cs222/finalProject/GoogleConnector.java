@@ -2,6 +2,7 @@ package edu.bsu.cs222.finalProject;
 import java.io.InputStream;
 import java.net.URL;
 
+@SuppressWarnings("all")//Suppresses warnings about this class not being used.
 public class GoogleConnector {
     String apiKey = "AIzaSyD6D-ZQXelCl7fAC6nMjxKXRMDOHGsVjaM";
     String address;
