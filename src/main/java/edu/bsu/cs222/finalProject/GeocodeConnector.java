@@ -14,7 +14,7 @@ public class GeocodeConnector {
     }
 
     public URL convertToGeocodeURL() throws Exception {
-        String address = "";
+        String address;
         address = String.format("%s %s %s", streetAddress, city, state);
         String convertedAddress = address.replaceAll(" ", "%20");
         return new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + convertedAddress + "&key=" + apiKey);
