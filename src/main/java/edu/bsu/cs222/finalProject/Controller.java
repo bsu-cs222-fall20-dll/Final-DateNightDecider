@@ -1,4 +1,5 @@
 package edu.bsu.cs222.finalProject;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -24,6 +25,9 @@ public class Controller {
     public Spinner maxPrice;
     public Spinner minPrice;
     public Button submitButton;
+    public Label travelTime;
+
+    public Integer hasAddedTravelTime = 0;
 
 
     public String convertType(){
@@ -34,6 +38,7 @@ public class Controller {
             default -> type.getValue().toString();
         };
     }
+
 
     public void displayPlaces(ActionEvent actionEvent) throws Exception {
         GeocodeConnector geocodeConnector = new GeocodeConnector(streetAddress.getText(), city.getText(), state.getText());
@@ -76,11 +81,20 @@ public class Controller {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                Label travelTime = new Label(String.format("It will take approximately %s to get to %s at %s", directionParser.getTravelTime(), newValue.getName(), newValue.getAddress()));
-                travelTime.setTextFill(Color.WHITE);
-                travelTime.setWrapText(true);
-                travelTime.setFont(new Font("System Bold", 12));
-                mainBox.getChildren().add(travelTime);
+                String travelTimeString = String.format("It will take approximately %s to get to %s at %s", directionParser.getTravelTime(), newValue.getName(), newValue.getAddress());
+                if (hasAddedTravelTime == 1)
+                {
+                    travelTime.setText(travelTimeString);
+
+                }
+                else
+                {
+                    travelTime.setTextFill(Color.WHITE);
+                    travelTime.setWrapText(true);
+                    travelTime.setFont(new Font("System Bold", 12));
+                    mainBox.getChildren().add(travelTime);
+                    hasAddedTravelTime = 1;
+                }
             }
         });
 

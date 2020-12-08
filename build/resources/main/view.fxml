@@ -8,202 +8,183 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="500.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.Controller">
-   <children>
-      <VBox fx:id="mainBox" alignment="TOP_CENTER" prefHeight="650.0" prefWidth="500.0">
-         <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="500.0">
-               <children>
-                  <ImageView fitHeight="177.0" fitWidth="311.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@DND.png" />
-                     </image>
-                  </ImageView>
-               </children>
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" styleClass="hBox">
-               <children>
-                  <Label text="Street Address" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font></Label>
-                  <TextField fx:id="streetAddress">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-               <children>
-                  <Label text="City" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="city">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-               <children>
-                  <Label text="State" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="state">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefWidth="200.0" styleClass="hBox">
-               <children>
-                  <Label text="Max Travel Distance (Miles)" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Spinner fx:id="radius" amountToStepBy="1" editable="true" initialValue="1" max="100" min="0">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </Spinner>
-               </children>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin></HBox>
-            <HBox prefWidth="200.0">
-               <children>
-                  <Label text="Type" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <ChoiceBox fx:id="type" prefWidth="150.0">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                     <items>
-                        <FXCollections fx:factory="observableArrayList">
-                           <String fx:value="restaurant" />
-                           <String fx:value="museum" />
-                           <String fx:value="bowling alley" />
-                           <String fx:value="movie theater" />
-                           <String fx:value="any" />
-                        </FXCollections>
-                     </items>
-                  </ChoiceBox>
-               </children>
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </HBox>
-            <HBox prefWidth="200.0">
-               <children>
-                  <Label text="Keyword" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="keyword">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </TextField>
-               </children>
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefWidth="200.0">
-               <children>
-                  <Label text="Min Price" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Spinner fx:id="minPrice" amountToStepBy="1" editable="true" initialValue="0" max="5" min="0">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </Spinner>
-               </children>
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="CENTER_LEFT" prefWidth="200.0">
-               <children>
-                  <Label text="Max Price" textFill="WHITE">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Spinner fx:id="maxPrice" amountToStepBy="1" editable="true" initialValue="5" max="5" min="0">
-                     <HBox.margin>
-                        <Insets left="10.0" />
-                     </HBox.margin>
-                  </Spinner>
-               </children>
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-            </HBox>
-            <HBox alignment="CENTER" prefWidth="200.0">
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-               <children>
-                  <Button fx:id="submitButton" mnemonicParsing="false" onAction="#displayPlaces" prefHeight="31.0" prefWidth="77.0" text="Submit">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
-               </children>
-            </HBox>
-         </children>
-      </VBox>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0"
+            prefWidth="500.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="edu.bsu.cs222.finalProject.Controller">
+   <VBox fx:id="mainBox" alignment="TOP_CENTER" prefHeight="650.0" prefWidth="500.0">
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="500.0">
+         <padding>
+            <Insets top="10.0"/>
+         </padding>
+         <ImageView fitHeight="177.0" fitWidth="311.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@DND.png"/>
+         </ImageView>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" styleClass="hBox">
+         <padding>
+            <Insets left="20.0"/>
+         </padding>
+         <VBox.margin>
+            <Insets top="20.0"/>
+         </VBox.margin>
+         <Label text="Street Address" textFill="WHITE">
+            <font>
+               <Font size="18.0"/>
+            </font>
+         </Label>
+         <TextField fx:id="streetAddress">
+            <HBox.margin>
+               <Insets left="10.0"/>
+            </HBox.margin>
+         </TextField>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefWidth="200.0">
+         <VBox.margin>
+            <Insets top="20.0"/>
+         </VBox.margin>
+         <padding>
+            <Insets left="20.0"/>
+         </padding>
+         <Label text="City" textFill="WHITE">
+            <font>
+               <Font size="18.0"/>
+            </font>
+         </Label>
+         <TextField fx:id="city">
+            <HBox.margin>
+               <Insets left="10.0"/>
+            </HBox.margin>
+         </TextField>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefWidth="200.0">
+         <VBox.margin>
+            <Insets top="20.0"/>
+         </VBox.margin>
+         <padding>
+            <Insets left="20.0"/>
+         </padding>
+         <Label text="State" textFill="WHITE">
+            <font>
+               <Font size="18.0"/>
+            </font>
+         </Label>
+         <TextField fx:id="state">
+            <HBox.margin>
+               <Insets left="10.0"/>
+            </HBox.margin>
+         </TextField>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefWidth="200.0" styleClass="hBox">
+         <padding>
+            <Insets left="20.0"/>
+         </padding>
+         <VBox.margin>
+            <Insets top="20.0"/>
+         </VBox.margin>
+         <Label text="Max Travel Distance (Miles)" textFill="WHITE">
+            <font>
+               <Font size="18.0"/>
+            </font>
+         </Label>
+         <Spinner fx:id="radius" amountToStepBy="1" editable="true" initialValue="1" max="100" min="0">
+            <HBox.margin>
+               <Insets left="10.0"/>
+            </HBox.margin>
+         </Spinner>
+      </HBox>
+      <HBox prefWidth="200.0">
+         <VBox.margin>
+            <Insets top="20.0"/>
+         </VBox.margin>
+         <padding>
+            <Insets left="20.0"/>
+         </padding>
+         <Label text="Type" textFill="WHITE">
+            <font>
+               <Font size="18.0"/>
+            </font>
+         </Label>
+         <ChoiceBox fx:id="type" prefWidth="150.0">
+            <HBox.margin>
+               <Insets left="10.0"/>
+            </HBox.margin>
+            <items>
+               <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="restaurant"/>
+                  <String fx:value="museum"/>
+                  <String fx:value="bowling alley"/>
+                  <String fx:value="movie theater"/>
+                  <String fx:value="any"/>
+               </FXCollections>
+            </items>
+         </ChoiceBox>
+      </HBox>
+      <HBox prefWidth="200.0">
+         <VBox.margin>
+            <Insets top="20.0"/>
+         </VBox.margin>
+         <padding>
+            <Insets left="20.0"/>
+         </padding>
+         <Label text="Keyword" textFill="WHITE">
+            <font>
+               <Font size="18.0"/>
+            </font>
+         </Label>
+         <TextField fx:id="keyword">
+            <HBox.margin>
+               <Insets left="10.0"/>
+            </HBox.margin>
+         </TextField>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefWidth="200.0">
+         <VBox.margin>
+            <Insets top="20.0"/>
+         </VBox.margin>
+         <padding>
+            <Insets left="20.0"/>
+         </padding>
+         <Label text="Min Price" textFill="WHITE">
+            <font>
+               <Font size="18.0"/>
+            </font>
+         </Label>
+         <Spinner fx:id="minPrice" amountToStepBy="1" editable="true" initialValue="0" max="5" min="0">
+            <HBox.margin>
+               <Insets left="10.0"/>
+            </HBox.margin>
+         </Spinner>
+      </HBox>
+      <HBox alignment="CENTER_LEFT" prefWidth="200.0">
+         <VBox.margin>
+            <Insets top="20.0"/>
+         </VBox.margin>
+         <padding>
+            <Insets left="20.0"/>
+         </padding>
+         <Label text="Max Price" textFill="WHITE">
+            <font>
+               <Font size="18.0"/>
+            </font>
+         </Label>
+         <Spinner fx:id="maxPrice" amountToStepBy="1" editable="true" initialValue="5" max="5" min="0">
+            <HBox.margin>
+               <Insets left="10.0"/>
+            </HBox.margin>
+         </Spinner>
+      </HBox>
+      <HBox alignment="CENTER" prefWidth="200.0">
+         <VBox.margin>
+            <Insets top="20.0"/>
+         </VBox.margin>
+         <Button fx:id="submitButton" mnemonicParsing="false" onAction="#displayPlaces" prefHeight="31.0"
+                 prefWidth="77.0" text="Submit">
+            <font>
+               <Font size="15.0"/>
+            </font>
+         </Button>
+         <Label fx:id="travelTime">
+         </Label>
+      </HBox>
+   </VBox>
 </AnchorPane>
