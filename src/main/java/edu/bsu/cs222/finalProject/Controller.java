@@ -1,5 +1,5 @@
 package edu.bsu.cs222.finalProject;
-import javafx.application.Platform;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -82,12 +82,9 @@ public class Controller {
                     e.printStackTrace();
                 }
                 String travelTimeString = String.format("It will take approximately %s to get to %s at %s", directionParser.getTravelTime(), newValue.getName(), newValue.getAddress());
-                if (hasAddedTravelTime == 1)
-                {
-                    travelTime.setText(travelTimeString);
+                travelTime.setText(travelTimeString);
 
-                }
-                else
+                if (hasAddedTravelTime == 0) //checks to see if traveltime has been added yet, so it only happens once and just updates the text afterwards
                 {
                     travelTime.setTextFill(Color.WHITE);
                     travelTime.setWrapText(true);
