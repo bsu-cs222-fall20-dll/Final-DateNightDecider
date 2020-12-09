@@ -25,6 +25,9 @@ public class Controller {
     public Spinner maxPrice;
     public Spinner minPrice;
     public Button submitButton;
+    public Label travelTime;
+
+    public Integer hasAddedTravelTime = 0;
 
 
     public String convertType(){
@@ -96,11 +99,17 @@ public class Controller {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-                Label travelTime = new Label(String.format("It will take approximately %s to get to %s at %s", directionParser.getTravelTime(), newValue.getName(), newValue.getAddress()));
-                travelTime.setTextFill(Color.WHITE);
-                travelTime.setWrapText(true);
-                travelTime.setFont(new Font("System Bold", 12));
-                mainBox.getChildren().add(travelTime);
+                String travelTimeString = String.format("It will take approximately %s to get to %s at %s", directionParser.getTravelTime(), newValue.getName(), newValue.getAddress());
+                travelTime.setText(travelTimeString);
+
+                if (hasAddedTravelTime == 0) //checks to see if traveltime has been added yet, so it only happens once and just updates the text afterwards
+                {
+                    travelTime.setTextFill(Color.WHITE);
+                    travelTime.setWrapText(true);
+                    travelTime.setFont(new Font("System Bold", 12));
+                    mainBox.getChildren().add(travelTime);
+                    hasAddedTravelTime = 1;
+                }
 
                 try {
                     createReviewsTable(detailsParser.getReviews());
