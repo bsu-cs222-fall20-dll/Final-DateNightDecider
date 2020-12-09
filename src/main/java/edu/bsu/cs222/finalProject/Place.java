@@ -5,11 +5,13 @@ public class Place {
     private final String address;
     private final Integer priceLevel;
     private final String placeID;
-    public Place(String name, String address, Integer priceLevel, String placeID) {
+    private final Integer rating;
+    public Place(String name, String address, Integer priceLevel, String placeID, Integer rating) {
         this.name = name;
         this.address = address;
         this.priceLevel = priceLevel;
         this.placeID = placeID;
+        this.rating = rating;
     }
 
     public String getName() {
@@ -23,5 +25,8 @@ public class Place {
     }
     public String getPlaceID() {
         return placeID;
+    }
+    public Integer getRating() {
+        return rating;
     }
 }

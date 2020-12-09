@@ -47,4 +47,11 @@ public class JSONReaderTest {
         DirectionParser directionParser = new DirectionParser(inputStream);
         Assertions.assertEquals("4 mins", directionParser.getTravelTime());
     }
+
+    @Test
+    public void testGetReviewName() throws Exception{
+        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("Details.json");
+        DetailsParser detailsParser = new DetailsParser(inputStream);
+        Assertions.assertEquals("Whitley-Le'Ann Buck", detailsParser.getReviews().get(0).getAuthorName());
+    }
 }

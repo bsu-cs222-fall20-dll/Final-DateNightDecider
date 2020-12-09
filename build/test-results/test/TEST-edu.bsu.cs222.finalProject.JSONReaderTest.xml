@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.bsu.cs222.finalProject.JSONReaderTest" tests="6" skipped="0" failures="0" errors="0" timestamp="2020-11-05T20:31:48" hostname="DESKTOP-1EPGKJO" time="1.004">
+<testsuite name="edu.bsu.cs222.finalProject.JSONReaderTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-12-09T02:45:36" hostname="DESKTOP-1EPGKJO" time="0.033">
   <properties/>
-  <testcase name="testGetTravelTime" classname="edu.bsu.cs222.finalProject.JSONReaderTest" time="0.037"/>
-  <testcase name="testGetNames" classname="edu.bsu.cs222.finalProject.JSONReaderTest" time="0.011"/>
-  <testcase name="testJsonReader" classname="edu.bsu.cs222.finalProject.JSONReaderTest" time="0.944"/>
-  <testcase name="testGetLatitude" classname="edu.bsu.cs222.finalProject.JSONReaderTest" time="0.003"/>
-  <testcase name="testGetLongitude" classname="edu.bsu.cs222.finalProject.JSONReaderTest" time="0.001"/>
-  <testcase name="testFilterPriceLevel" classname="edu.bsu.cs222.finalProject.JSONReaderTest" time="0.006"/>
+  <testcase name="testGetReviewName" classname="edu.bsu.cs222.finalProject.JSONReaderTest" time="0.033"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

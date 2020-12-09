@@ -67,4 +67,13 @@ public class GoogleMapsConnectorTest {
         Assertions.assertEquals("OK", rootElement.getAsJsonObject().get("status").getAsString());
     }
 
+    @Test
+    public void testDetailsInputstream() throws Exception {
+        JsonParser parser = new JsonParser();
+        DetailsConnector detailsConnector = new DetailsConnector("ChIJjatB3hQ9FYgRkGpcFySBxy4");
+        DetailsParser detailsParser = new DetailsParser(detailsConnector.detailsInputstream());
+        Reader reader = new InputStreamReader(detailsConnector.detailsInputstream());
+        JsonElement rootElement = parser.parse(reader);
+        Assertions.assertEquals("OK", rootElement.getAsJsonObject().get("status").getAsString());
+    }
 }

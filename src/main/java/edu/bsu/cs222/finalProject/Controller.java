@@ -6,10 +6,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-
 import java.util.ArrayList;
 
 @SuppressWarnings("all")//Suppresses warnings about actionEvent not being used even though it is necessary
@@ -53,15 +54,25 @@ public class Controller {
 
     public void createTable(ArrayList<Place> places, String originPlaceID) {
         TableView<Place> outputTable = new TableView<>();
+
         TableColumn<Place, String> nameColumn = new TableColumn<>("Name");
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+
         TableColumn<Place, String> addressColumn = new TableColumn<>("Address");
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
+
+        TableColumn<Place, String> ratingColumn = new TableColumn<>("Rating");
+        ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
+
         outputTable.getColumns().add(nameColumn);
         outputTable.getColumns().add(addressColumn);
+        outputTable.getColumns().add(ratingColumn);
+
         ObservableList<Place> listOfPlaces = FXCollections.observableArrayList(places);
         outputTable.setItems(listOfPlaces);
+
         mainBox.getChildren().add(outputTable);
+
         selectPlace(outputTable, originPlaceID);
     }
 
@@ -76,13 +87,48 @@ public class Controller {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
+                DetailsConnector detailsConnector = new DetailsConnector(newValue.getPlaceID());
+                DetailsParser detailsParser = null;
+
+                try {
+                    detailsParser = new DetailsParser(detailsConnector.detailsInputstream());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 Label travelTime = new Label(String.format("It will take approximately %s to get to %s at %s", directionParser.getTravelTime(), newValue.getName(), newValue.getAddress()));
                 travelTime.setTextFill(Color.WHITE);
                 travelTime.setWrapText(true);
                 travelTime.setFont(new Font("System Bold", 12));
                 mainBox.getChildren().add(travelTime);
+
+                try {
+                    createReviewsTable(detailsParser.getReviews());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
+    }
 
+    public void createReviewsTable(ArrayList<Review> reviews) throws Exception {
+        TableView<Review> reviewTable = new TableView<>();
+
+        TableColumn<Review, String> nameColumn = new TableColumn<>("Author Name");
+        nameColumn.setCellValueFactory(new PropertyValueFactory<>("authorName"));
+
+        TableColumn<Review, String> ratingColumn = new TableColumn<>("Rating");
+        ratingColumn.setCellValueFactory(new PropertyValueFactory<>("rating"));
+
+        TableColumn<Review, String> messageColumn = new TableColumn<>("Message");
+        messageColumn.setCellValueFactory(new PropertyValueFactory<>("message"));
+
+        reviewTable.getColumns().add(nameColumn);
+        reviewTable.getColumns().add(ratingColumn);
+        reviewTable.getColumns().add(messageColumn);
+
+        ObservableList<Review> listOfReviews = FXCollections.observableArrayList(reviews);
+        reviewTable.setItems(listOfReviews);
+        mainBox.getChildren().add(reviewTable);
     }
 }

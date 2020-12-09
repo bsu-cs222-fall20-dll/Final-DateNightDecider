@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.bsu.cs222.finalProject.GoogleMapsConnectorTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-10-22T02:03:39" hostname="DESKTOP-1EPGKJO" time="0.679">
-  <properties/>
-  <testcase name="testGeocodeInputStream" classname="edu.bsu.cs222.finalProject.GoogleMapsConnectorTest" time="0.679"/>
-  <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
