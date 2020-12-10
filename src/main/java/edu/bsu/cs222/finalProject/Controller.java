@@ -18,7 +18,7 @@ public class Controller {
     public TextField city;
     public TextField state;
     public TextField keyword;
-    public ChoiceBox type;
+    public ChoiceBox placeType;
     public VBox mainBox;
     public Spinner radius;
     public Spinner maxPrice;
@@ -33,11 +33,13 @@ public class Controller {
 
 
     public String convertType(){
-        return switch (type.getValue().toString()) {
-            case "bowling alley" -> "bowling_alley";
-            case "movie theater" -> "movie_theater";
-            case "any" -> "";
-            default -> type.getValue().toString();
+        return switch (placeType.getValue().toString()) {
+            case "Restaurant" -> "restaurant";
+            case "Museum" -> "museum";
+            case "Bowling Alley" -> "bowling_alley";
+            case "Movie Theater" -> "movie_theater";
+            case "Any" -> "";
+            default -> placeType.getValue().toString();
         };
     }
 
@@ -49,7 +51,7 @@ public class Controller {
         ArrayList<Place> filteredPlaceNames = placeParser.filterByPriceLevel(placeParser.getPlaceNames(), Integer.parseInt(minPrice.getValue().toString()) , Integer.parseInt(maxPrice.getValue().toString()));
         mainBox.setAlignment(Pos.CENTER);
         mainBox.getChildren().clear();
-        Label travel = new Label("Select a place from the table to view travel time along with its reviews");
+        Label travel = new Label("Select a place from the table to view travel time and reviews");
         travel.setTextFill(Color.WHITE);
         travel.setWrapText(true);
         travel.setFont(new Font("System Bold", 18));
@@ -102,10 +104,7 @@ public class Controller {
 
                 String travelTimeString = String.format("It will take approximately %s to get to %s at %s", directionParser.getTravelTime(), newValue.getName(), newValue.getAddress());
                 travelTime.setText(travelTimeString);
-                if (!hasAddedTravelTime) {//checks to see if traveltime has been added yet, so it only happens once and just updates the text afterwards
-                    travelTime.setTextFill(Color.WHITE);
-                    travelTime.setWrapText(true);
-                    travelTime.setFont(new Font("System Bold", 12));
+                if (!hasAddedTravelTime) {
                     mainBox.getChildren().add(travelTime);
                     hasAddedTravelTime = true;
                 }
@@ -149,4 +148,5 @@ public class Controller {
         reviewVBox.getChildren().add(reviewTable);
         hasAddedReviewTable = true;
     }
+
 }

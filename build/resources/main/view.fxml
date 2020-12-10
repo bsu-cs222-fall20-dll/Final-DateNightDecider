@@ -84,7 +84,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Spinner fx:id="radius" amountToStepBy="1" editable="true" initialValue="1" max="100" min="0" prefHeight="25.0" prefWidth="75.0">
+            <Spinner fx:id="radius" amountToStepBy="1" editable="true" initialValue="10" max="100" min="0" prefHeight="25.0" prefWidth="75.0">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
@@ -102,16 +102,17 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="type" prefWidth="150.0">
+            <ChoiceBox fx:id="placeType" prefWidth="150.0" value="Any">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
                <items>
                   <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="restaurant" />
-                     <String fx:value="museum" />
-                     <String fx:value="bowling alley" />
-                     <String fx:value="movie theater" />
+                     <String fx:value="Restaurant" />
+                     <String fx:value="Museum" />
+                     <String fx:value="Bowling Alley" />
+                     <String fx:value="Movie Theater" />
+                     <String fx:value="Any" />
                   </FXCollections>
                </items>
             </ChoiceBox>
@@ -180,7 +181,10 @@
                </font>
             </Button>
          </HBox>
-         <Label fx:id="travelTime">
+         <Label fx:id="travelTime" wrapText="true" textFill="white">
+            <font>
+               <Font size="12.0" name="System Bold" />
+            </font>
          </Label>
          <VBox fx:id="reviewVBox" alignment="CENTER" />
       </VBox>
