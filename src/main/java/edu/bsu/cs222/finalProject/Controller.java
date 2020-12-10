@@ -106,10 +106,7 @@ public class Controller {
 
                 String travelTimeString = String.format("It will take approximately %s to get to %s at %s", directionParser.getTravelTime(), newValue.getName(), newValue.getAddress());
                 travelTime.setText(travelTimeString);
-                if (!hasAddedTravelTime) {//checks to see if traveltime has been added yet, so it only happens once and just updates the text afterwards
-                    travelTime.setTextFill(Color.WHITE);
-                    travelTime.setWrapText(true);
-                    travelTime.setFont(new Font("System Bold", 12));
+                if (!hasAddedTravelTime) {
                     mainBox.getChildren().add(travelTime);
                     hasAddedTravelTime = true;
                 }

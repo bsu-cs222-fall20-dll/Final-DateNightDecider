@@ -181,7 +181,10 @@
                </font>
             </Button>
          </HBox>
-         <Label fx:id="travelTime">
+         <Label fx:id="travelTime" wrapText="true" textFill="white">
+            <font>
+               <Font size="12.0" name="System Bold" />
+            </font>
          </Label>
          <VBox fx:id="reviewVBox" alignment="CENTER" />
       </VBox>
