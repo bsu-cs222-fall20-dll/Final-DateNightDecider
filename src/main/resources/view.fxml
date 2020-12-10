@@ -112,6 +112,7 @@
                      <String fx:value="museum" />
                      <String fx:value="bowling alley" />
                      <String fx:value="movie theater" />
+                     <String fx:value="any" />
                   </FXCollections>
                </items>
             </ChoiceBox>
