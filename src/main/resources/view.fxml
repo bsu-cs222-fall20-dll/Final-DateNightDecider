@@ -108,11 +108,11 @@
                </HBox.margin>
                <items>
                   <FXCollections fx:factory="observableArrayList">
-                     <String fx:value="restaurant" />
-                     <String fx:value="museum" />
-                     <String fx:value="bowling alley" />
-                     <String fx:value="movie theater" />
-                     <String fx:value="any" />
+                     <String fx:value="Restaurant" />
+                     <String fx:value="Museum" />
+                     <String fx:value="Bowling Alley" />
+                     <String fx:value="Movie Theater" />
+                     <String fx:value="Any" />
                   </FXCollections>
                </items>
             </ChoiceBox>

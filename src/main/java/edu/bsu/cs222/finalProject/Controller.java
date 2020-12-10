@@ -36,9 +36,11 @@ public class Controller {
 
     public String convertType(){
         return switch (type.getValue().toString()) {
-            case "bowling alley" -> "bowling_alley";
-            case "movie theater" -> "movie_theater";
-            case "any" -> "";
+            case "Restaurant" -> "restaurant";
+            case "Museum" -> "museum";
+            case "Bowling Alley" -> "bowling_alley";
+            case "Movie Theater" -> "movie_theater";
+            case "Any" -> "";
             default -> type.getValue().toString();
         };
     }
