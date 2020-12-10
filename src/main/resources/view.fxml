@@ -184,7 +184,6 @@
             </Button>
          </HBox>
          <Label fx:id="travelTime">
-
          </Label>
       </VBox>
 </AnchorPane>

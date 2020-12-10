@@ -6,8 +6,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -27,7 +25,8 @@ public class Controller {
     public Button submitButton;
     public Label travelTime;
 
-    public Integer hasAddedTravelTime = 0;
+    public Boolean hasAddedTravelTime = false;
+    public Boolean hasAddedReviewTable = false;
 
 
     public String convertType(){
@@ -79,36 +78,40 @@ public class Controller {
         selectPlace(outputTable, originPlaceID);
     }
 
+    public ArrayList<Review> createReviewList(){
+        ArrayList<Review> artificialList = new ArrayList<>();
+        Review review1 = new Review("Cameron Slash", 10, "Dis is great Fam");
+        Review review2 = new Review("Alex Saunders", 4, "I hate dis");
+        artificialList.add(review1);
+        artificialList.add(review2);
+        return artificialList;
+    }
+
     public void selectPlace(TableView<Place> outputTable, String originPlaceID){
         outputTable.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Place>() {
             @Override
             public void changed(ObservableValue<? extends Place> observable, Place oldValue, Place newValue) {
-                DirectionConnector directionConnector = new DirectionConnector(originPlaceID, newValue.getPlaceID());
-                DirectionParser directionParser = null;
-                try {
-                    directionParser = new DirectionParser(directionConnector.directionInputstream());
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
                 DetailsConnector detailsConnector = new DetailsConnector(newValue.getPlaceID());
                 DetailsParser detailsParser = null;
 
+                DirectionConnector directionConnector = new DirectionConnector(originPlaceID, newValue.getPlaceID());
+                DirectionParser directionParser = null;
+
                 try {
+                    directionParser = new DirectionParser(directionConnector.directionInputstream());
                     detailsParser = new DetailsParser(detailsConnector.detailsInputstream());
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+
                 String travelTimeString = String.format("It will take approximately %s to get to %s at %s", directionParser.getTravelTime(), newValue.getName(), newValue.getAddress());
                 travelTime.setText(travelTimeString);
-
-                if (hasAddedTravelTime == 0) //checks to see if traveltime has been added yet, so it only happens once and just updates the text afterwards
-                {
+                if (!hasAddedTravelTime) {//checks to see if traveltime has been added yet, so it only happens once and just updates the text afterwards
                     travelTime.setTextFill(Color.WHITE);
                     travelTime.setWrapText(true);
                     travelTime.setFont(new Font("System Bold", 12));
                     mainBox.getChildren().add(travelTime);
-                    hasAddedTravelTime = 1;
+                    hasAddedTravelTime = true;
                 }
 
                 try {
@@ -138,6 +141,10 @@ public class Controller {
 
         ObservableList<Review> listOfReviews = FXCollections.observableArrayList(reviews);
         reviewTable.setItems(listOfReviews);
-        mainBox.getChildren().add(reviewTable);
+
+        if(!hasAddedReviewTable){
+            mainBox.getChildren().add(reviewTable);
+            hasAddedReviewTable = true;
+        }
     }
 }

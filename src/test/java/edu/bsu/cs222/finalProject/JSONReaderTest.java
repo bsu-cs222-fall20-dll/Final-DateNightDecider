@@ -52,6 +52,6 @@ public class JSONReaderTest {
     public void testGetReviewName() throws Exception{
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("Details.json");
         DetailsParser detailsParser = new DetailsParser(inputStream);
-        Assertions.assertEquals("Whitley-Le'Ann Buck", detailsParser.getReviews().get(0).getAuthorName());
+        Assertions.assertEquals("Always hot fresh and accurate", detailsParser.getReviews().get(0).getMessage());
     }
 }
