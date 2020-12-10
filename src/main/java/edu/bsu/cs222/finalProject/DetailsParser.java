@@ -27,16 +27,20 @@ public class DetailsParser {
         ArrayList<Review> reviewsList = new ArrayList<>();
         JsonObject result = rootObject.get("result").getAsJsonObject();
         JsonArray reviews = result.get("reviews").getAsJsonArray();
-        for (JsonElement element : reviews) {
-            JsonElement authorName = element.getAsJsonObject().get("author_name");
-            JsonElement rating = element.getAsJsonObject().get("rating");
-            JsonElement message = element.getAsJsonObject().get("text");
-            String reviewAuthorName = authorName.getAsString();
-            Integer reviewRating = rating.getAsInt();
-            String reviewMessage = message.getAsString();
-            Review newReview = new Review(reviewAuthorName, reviewRating, reviewMessage);
-            reviewsList.add(newReview);
+        if(reviews.isJsonNull()) {
+            for (JsonElement element : reviews) {
+                JsonElement authorName = element.getAsJsonObject().get("author_name");
+                JsonElement rating = element.getAsJsonObject().get("rating");
+                JsonElement message = element.getAsJsonObject().get("text");
+                String reviewAuthorName = authorName.getAsString();
+                Integer reviewRating = rating.getAsInt();
+                String reviewMessage = message.getAsString();
+                Review newReview = new Review(reviewAuthorName, reviewRating, reviewMessage);
+                reviewsList.add(newReview);
+            }
+            return reviewsList;
+        }else{
+            return null;
         }
-        return reviewsList;
     }
 }
