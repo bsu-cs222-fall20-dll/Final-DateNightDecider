@@ -51,7 +51,7 @@ public class Controller {
         ArrayList<Place> filteredPlaceNames = placeParser.filterByPriceLevel(placeParser.getPlaceNames(), Integer.parseInt(minPrice.getValue().toString()) , Integer.parseInt(maxPrice.getValue().toString()));
         mainBox.setAlignment(Pos.CENTER);
         mainBox.getChildren().clear();
-        Label travel = new Label("Select a place from the table to view travel time along with its reviews");
+        Label travel = new Label("Select a place from the table to view travel time and reviews");
         travel.setTextFill(Color.WHITE);
         travel.setWrapText(true);
         travel.setFont(new Font("System Bold", 18));
