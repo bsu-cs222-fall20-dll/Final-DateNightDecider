@@ -12,7 +12,7 @@ public class DetailsConnector {
     }
 
     public URL convertToDetailsURL() throws Exception {
-        return new URL("https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeID + "&fields=rating&key=" + apiKey);
+        return new URL("https://maps.googleapis.com/maps/api/place/details/json?place_id=" + placeID + "&fields=reviews&key=" + apiKey);
     }
 
     public InputStream detailsInputstream() throws Exception {

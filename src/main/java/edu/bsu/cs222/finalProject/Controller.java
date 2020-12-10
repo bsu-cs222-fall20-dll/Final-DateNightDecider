@@ -4,8 +4,11 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -24,6 +27,8 @@ public class Controller {
     public Spinner minPrice;
     public Button submitButton;
     public Label travelTime;
+    public TableView<Review> reviewTable;
+    public VBox reviewVBox;
 
     public Boolean hasAddedTravelTime = false;
     public Boolean hasAddedReviewTable = false;
@@ -44,9 +49,9 @@ public class Controller {
         PlaceConnector placeConnector = new PlaceConnector(geocodeParser.getLocation().getLatitude(), geocodeParser.getLocation().getLongitude(), convertType(), radius.getValue().toString(), keyword.getText());
         PlaceParser placeParser = new PlaceParser(placeConnector.placeInputstream());
         ArrayList<Place> filteredPlaceNames = placeParser.filterByPriceLevel(placeParser.getPlaceNames(), Integer.parseInt(minPrice.getValue().toString()) , Integer.parseInt(maxPrice.getValue().toString()));
-        System.out.println(placeConnector.convertToPlaceURL());
+        mainBox.setAlignment(Pos.CENTER);
         mainBox.getChildren().clear();
-        Label travel = new Label("Select a place from the table to view travel time");
+        Label travel = new Label("Select a place from the table to view travel time along with its reviews");
         travel.setTextFill(Color.WHITE);
         travel.setWrapText(true);
         travel.setFont(new Font("System Bold", 18));
@@ -72,19 +77,12 @@ public class Controller {
 
         ObservableList<Place> listOfPlaces = FXCollections.observableArrayList(places);
         outputTable.setItems(listOfPlaces);
+        outputTable.setMinWidth(600);
 
         mainBox.getChildren().add(outputTable);
+        mainBox.getChildren().add(reviewVBox);
 
         selectPlace(outputTable, originPlaceID);
-    }
-
-    public ArrayList<Review> createReviewList(){
-        ArrayList<Review> artificialList = new ArrayList<>();
-        Review review1 = new Review("Cameron Slash", 10, "Dis is great Fam");
-        Review review2 = new Review("Alex Saunders", 4, "I hate dis");
-        artificialList.add(review1);
-        artificialList.add(review2);
-        return artificialList;
     }
 
     public void selectPlace(TableView<Place> outputTable, String originPlaceID){
@@ -115,7 +113,12 @@ public class Controller {
                 }
 
                 try {
-                    createReviewsTable(detailsParser.getReviews());
+                    if (hasAddedReviewTable == true){
+                        reviewVBox.getChildren().clear();
+                        createReviewsTable(detailsParser.getReviews());
+                    } else {
+                        createReviewsTable(detailsParser.getReviews());
+                    }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -138,13 +141,14 @@ public class Controller {
         reviewTable.getColumns().add(nameColumn);
         reviewTable.getColumns().add(ratingColumn);
         reviewTable.getColumns().add(messageColumn);
+        reviewTable.setPrefWidth(600);
 
         ObservableList<Review> listOfReviews = FXCollections.observableArrayList(reviews);
         reviewTable.setItems(listOfReviews);
 
-        if(!hasAddedReviewTable){
-            mainBox.getChildren().add(reviewTable);
-            hasAddedReviewTable = true;
-        }
+
+
+        reviewVBox.getChildren().add(reviewTable);
+        hasAddedReviewTable = true;
     }
 }

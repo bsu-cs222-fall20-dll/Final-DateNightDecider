@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/view.fxml"));
         primaryStage.setTitle("Date Night Decider");
-        primaryStage.setScene(new Scene(root, 500, 650));
+        primaryStage.setScene(new Scene(root, 880, 700));
         primaryStage.show();
     }
 
