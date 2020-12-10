@@ -4,11 +4,9 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -20,7 +18,7 @@ public class Controller {
     public TextField city;
     public TextField state;
     public TextField keyword;
-    public ChoiceBox type;
+    public ChoiceBox placeType;
     public VBox mainBox;
     public Spinner radius;
     public Spinner maxPrice;
@@ -35,13 +33,13 @@ public class Controller {
 
 
     public String convertType(){
-        return switch (type.getValue().toString()) {
+        return switch (placeType.getValue().toString()) {
             case "Restaurant" -> "restaurant";
             case "Museum" -> "museum";
             case "Bowling Alley" -> "bowling_alley";
             case "Movie Theater" -> "movie_theater";
             case "Any" -> "";
-            default -> type.getValue().toString();
+            default -> placeType.getValue().toString();
         };
     }
 
@@ -150,4 +148,5 @@ public class Controller {
         reviewVBox.getChildren().add(reviewTable);
         hasAddedReviewTable = true;
     }
+
 }

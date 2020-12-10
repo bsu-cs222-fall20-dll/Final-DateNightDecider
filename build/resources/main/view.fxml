@@ -102,7 +102,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <ChoiceBox fx:id="type" prefWidth="150.0">
+            <ChoiceBox fx:id="placeType" prefWidth="150.0">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
